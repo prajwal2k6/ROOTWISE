@@ -5,6 +5,8 @@ from app.database import Base, engine
 from app.models.farm import Farm
 from app.routes.rotation_matchmaker import router as rotation_matchmaker_router
 from app.routes.farms import router as farms_router
+from app.routes.nasa_data import router as nasa_data_router
+
 
 
 app = FastAPI(
@@ -33,6 +35,7 @@ def create_database_tables():
 
 app.include_router(farms_router)
 app.include_router(rotation_matchmaker_router)
+app.include_router(nasa_data_router)
 
 
 @app.get("/")

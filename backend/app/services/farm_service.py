@@ -9,6 +9,8 @@ def create_farm(db: Session, user_id: str, farm_data: FarmCreate) -> Farm:
         farm_name=farm_data.farm_name,
         latitude=farm_data.latitude,
         longitude=farm_data.longitude,
+        state=farm_data.state,
+district=farm_data.district,
         boundary=farm_data.boundary,
         area_acres=farm_data.area_acres,
         area_hectares=farm_data.area_hectares,

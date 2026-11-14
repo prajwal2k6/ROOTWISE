@@ -19,6 +19,8 @@ class Farm(Base):
     # Farm location
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
+    state = Column(String(100), nullable=True)
+    district = Column(String(100), nullable=True)
     boundary = Column(JSON, nullable=False)
 
     # Farm area
