@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import Base, engine
 from app.models.farm import Farm
+from app.routes.rotation_matchmaker import router as rotation_matchmaker_router
 from app.routes.farms import router as farms_router
 
 
@@ -31,6 +32,7 @@ def create_database_tables():
 
 
 app.include_router(farms_router)
+app.include_router(rotation_matchmaker_router)
 
 
 @app.get("/")
