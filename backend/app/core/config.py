@@ -1,15 +1,14 @@
+
 from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-backend_env = BASE_DIR / ".env"
-root_env = BASE_DIR.parent / ".env"
 
-env_file = ".env"
-if backend_env.exists():
-    env_file = str(backend_env)
-elif root_env.exists():
-    env_file = str(root_env)
+# Get the ROOTWISE backend directory
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+# Locate the backend .env file
+ENV_FILE = BASE_DIR / ".env"
 
 
 class Settings(BaseSettings):
@@ -18,9 +17,11 @@ class Settings(BaseSettings):
     SUPABASE_PUBLISHABLE_KEY: str
 
     model_config = SettingsConfigDict(
-        env_file=env_file,
+        env_file=str(ENV_FILE),
+        env_file_encoding="utf-8",
         extra="ignore",
     )
 
 
+# Create application settings
 settings = Settings()
