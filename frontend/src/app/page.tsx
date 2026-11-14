@@ -10,6 +10,8 @@ import type { AuthMode, OnboardingStep } from "@/types/features";
 
 import { getSession, signIn, signUp } from "@/services/authService";
 
+import Dashboard from "@/components/dashboard/Dashboard";
+
 import {
   buildFarmPayload,
   createFarm,
@@ -255,7 +257,7 @@ export default function Home() {
 
     try {
       if (authMode === "Sign up") {
-        const { data, error } = await signUp(
+        const { error } = await signUp(
           email,
           password,
           fullName
@@ -263,18 +265,6 @@ export default function Home() {
 
         if (error) {
           throw error;
-        }
-
-        // Supabase may require email verification before login.
-        if (!data.session) {
-          setNotice(
-            "Account created! Check your email and click the verification link. After verifying, return here and log in."
-          );
-
-          setAuthMode("Login");
-          setPassword("");
-
-          return;
         }
       } else {
         const { error } = await signIn(email, password);

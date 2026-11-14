@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { featureData } from "@/types/features";
 
 export default function Navbar() {
@@ -8,12 +9,14 @@ export default function Navbar() {
 
   return (
     <nav className="rw-nav">
-      <a className="rw-logo" href="#top">
+      <Link className="rw-logo" href="/">
         ROOT<span>WISE</span>
-      </a>
+      </Link>
+
       <div className="rw-navlinks">
-        <a href="#farm">Your farm</a>
-        <a href="#your-farms">Dashboard</a>
+        <Link href="/#farm">Your farm</Link>
+        <Link href="/dashboard">Dashboard</Link>
+
         <div className="rw-feature-menu-wrap">
           <button
             className={`rw-feature-menu-trigger ${featureMenuOpen ? "open" : ""}`}
@@ -23,6 +26,7 @@ export default function Navbar() {
           >
             Features
           </button>
+
           {featureMenuOpen && (
             <div className="rw-feature-dropdown">
               {featureData.map((feature, index) => (
@@ -31,9 +35,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => {
                     setFeatureMenuOpen(false);
-                    document
-                      .getElementById(`feature-${index}`)
-                      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    window.location.href = `/#feature-${index}`;
                   }}
                 >
                   <span>{feature.number}</span>
