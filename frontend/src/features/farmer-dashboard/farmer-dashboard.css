@@ -1,0 +1,12 @@
+/* 06 — FARMER DASHBOARD */
+.fd-modal {
+  /* Inherits modal styles from shared rootwise modal */
+}
+
+.fd-badge {
+  color: #628258;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
