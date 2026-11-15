@@ -34,9 +34,7 @@ def create_database_tables():
 
 app.include_router(farms_router)
 app.include_router(rotation_matchmaker_router)
-<<<<<<< Updated upstream
 app.include_router(nasa_data_router)
-=======
 app.include_router(what_if_simulator_router)
 
 # Convenience aliases for /simulate and /api/simulate
@@ -55,7 +53,7 @@ def simulate_proxy(
         rainfall_delta_percent=rainfall_delta_percent,
         preset=preset
     ))
->>>>>>> Stashed changes
+
 
 
 @app.get("/")
