@@ -1,0 +1,36 @@
+metadata:
+  rules_version: "0.2.0"
+  all_indices_are_algorithmic_policy_not_fao_published_scores: true
+  missing_data: "null is NOT 0; total is lower-bound known-weight sum"
+  priorities: "weight each of 6 farmer objectives by priority / sum of priorities"
+criteria:
+  water_use:
+    label: Water use / adequacy
+    formula_when_M2_inputs: '100 * min(1, (effective_rain_mm + irrigation_mm) / crop_ETc_mm)'
+    formula_without_M2: '100 * (max_candidate_reference_ETc - crop_reference_ETc) / range_of_candidate_reference_ETc'
+    caveat: 'Water ratio ignores soil storage and timing; fallback is only relative reference-demand index.'
+  forage_value:
+    label: Forage protein-quality proxy
+    formula: '100 * clamp(crude_protein_pct_DM / 20, 0, 1)'
+    benchmark_pct_DM: 20
+    caveat: '20% CP is a Rootwise screening target, not a FAO recommended diet. Does not model available dry matter or feed safety.'
+  nitrogen_fixing:
+    label: Biological nitrogen fixation capability
+    formula: '100 if a documented nitrogen-fixing legume, else 0'
+    caveat: 'Does not estimate net fixed nitrogen returned to the soil.'
+  erosion_reduction:
+    label: Relative soil cover management factor
+    formula: '100 * (1 - RUSLE_C_factor)'
+    citation: 'https://www.fao.org/land-water/land/land-governance-and-planning/land-resources-planning-toolbox/detail/revised-universal-soil-loss-equation/en'
+    caveat: 'Requires documented field/crop RUSLE C. Not tonnes of soil saved or a location-independent crop trait.'
+  organic_matter:
+    label: Retained dry crop-residue input
+    formula: '100 * clamp((dry_crop_residue_tDM_ha * retained_fraction) / 5, 0, 1)'
+    benchmark_tDM_ha: 5
+    caveat: '5 tDM/ha is a Rootwise comparison target, NOT a scientific SOC increment; belowground biomass excluded.'
+  market_suitability:
+    label: Date-specific estimated return on cash cost
+    formula: '100 * clamp((price_per_q * yield_q_ha - (cultivation_cost_ha + transport_cost_q * yield_q_ha)) / total_cost / 1.0, 0, 1)'
+    target_roi: 1.0
+    maximum_price_age_days: 90
+    caveat: '1.0 ROI is Rootwise benchmark. Requires local prices, yield expectations, costs and date; NOT guaranteed profit.'

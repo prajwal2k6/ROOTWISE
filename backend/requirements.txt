@@ -7,3 +7,5 @@ pydantic-settings==2.15.0
 python-dotenv==1.1.1
 psycopg[binary]
 email-validator
+PyYAML
+alembic

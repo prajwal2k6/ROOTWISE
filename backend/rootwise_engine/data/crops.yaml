@@ -1,0 +1,540 @@
+metadata:
+  case_study: Devanahalli initial demo; crop reference data is location-independent
+  observational_climate_data_included: false
+  caution: FAO category proxies and generic Kc are not variety-specific. stage_lengths are FAO water-use stages,
+    NOT five-stage crop phenology.
+  fao_water_source: https://www.fao.org/4/s2022e/s2022e07.htm
+  fao_kc_source: https://www.fao.org/4/s2022e/s2022e07.htm
+  uas_source: https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  new_sources: Feedipedia crop material composition values. See research_sources.md for source scope.
+crops:
+- id: ragi
+  name: Finger millet
+  kannada: ರಾಗಿ
+  scientific_name: Eleusine coracana
+  category: cereal
+  varieties:
+  - GPU-28
+  - GPU-48
+  - GPU-66
+  - GPU-67
+  nitrogen_fixing: false
+  water_need:
+    value: null
+    low: 450
+    high: 650
+    unit: mm per growing season
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 105
+    high: 140
+    unit: days
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  kc:
+    initial: 0.35
+    development: 0.7
+    mid: 1.1
+    late: 0.65
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths:
+  - 15
+  - 25
+  - 40
+  - 25
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - grain
+  - straw
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/447
+  forage_material: straw
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 5.0
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/447
+    source_detail: Finger millet straw; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages: []
+  critical_growth_stages_source_url: null
+- id: groundnut
+  name: Groundnut
+  kannada: ಶೇಂಗಾ
+  scientific_name: Arachis hypogaea
+  category: oilseed_legume
+  varieties:
+  - GKVK-27
+  - GKVK-5
+  - Chintamani-6
+  nitrogen_fixing: true
+  water_need:
+    value: null
+    low: 500
+    high: 700
+    unit: mm per growing season
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; named crop reference
+    proxy: false
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 130
+    high: 140
+    unit: days
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; named crop reference
+    proxy: false
+    kind: published_reference
+  kc:
+    initial: 0.45
+    development: 0.75
+    mid: 1.05
+    late: 0.7
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: false
+  fao_stage_lengths:
+  - 25
+  - 35
+  - 45
+  - 25
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - oilseed
+  - haulms
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/695
+  - https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+  forage_material: dried haulms
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 11.1
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/695
+    source_detail: Peanut crop residues dry; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages:
+  - emergence
+  - flowering
+  - pegging
+  - pod_development
+  critical_growth_stages_source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+- id: horse_gram
+  name: Horse gram
+  kannada: ಹುರುಳಿ
+  scientific_name: Macrotyloma uniflorum
+  category: legume
+  varieties:
+  - PHG-9
+  nitrogen_fixing: true
+  water_need:
+    value: null
+    low: null
+    high: null
+    unit: mm per growing season
+    source_url: null
+    source_detail: FAO Crop Water Needs; crop-category proxy
+    proxy: false
+    kind: missing
+  reference_duration:
+    value: null
+    low: 100
+    high: 105
+    unit: days
+    source_url: https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+    source_detail: UAS Bangalore PHG-9 100-105 day maturity; variety-specific, not generic horse gram
+    proxy: false
+    kind: published_reference
+    variety: PHG-9
+  kc:
+    initial: 0.45
+    development: 0.75
+    mid: 1.1
+    late: 0.5
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths: null
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - pulse
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+  forage_material: herbage
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: null
+    unit: percent of dry matter
+    source_url: null
+    source_detail: No suitable verified comparable feed composition. Feedipedia draft explicitly says DO NOT
+      QUOTE.
+    proxy: false
+    kind: missing
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages: []
+  critical_growth_stages_source_url: null
+- id: cowpea
+  name: Cowpea
+  kannada: ಅಲಸಂದೆ
+  scientific_name: Vigna unguiculata
+  category: legume
+  varieties:
+  - KC-8
+  - PGCP-6
+  - AV-6
+  nitrogen_fixing: true
+  water_need:
+    value: null
+    low: 300
+    high: 500
+    unit: mm per growing season
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 95
+    high: 110
+    unit: days
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  kc:
+    initial: 0.45
+    development: 0.75
+    mid: 1.1
+    late: 0.5
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths: null
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - pulse
+  - fodder_potential
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/17446
+  forage_material: haulms
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 13.7
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/17446
+    source_detail: Cowpea haulms; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages: []
+  critical_growth_stages_source_url: null
+- id: pigeon_pea
+  name: Pigeon pea
+  kannada: ತೊಗರಿ
+  scientific_name: Cajanus cajan
+  category: legume
+  varieties:
+  - BRG-1
+  - BRG-2
+  - BRG-3
+  - BRG-4
+  - BRG-5
+  nitrogen_fixing: true
+  water_need:
+    value: null
+    low: 500
+    high: 800
+    unit: mm per growing season
+    source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+    source_detail: ICRISAT 2021 chapter Table 10.7 (FAO papers 33/56 attribution); general pigeon-pea reference,
+      not Karnataka field measurement
+    proxy: false
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 140
+    high: 180
+    unit: days
+    source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+    source_detail: ICRISAT 2021 chapter Table 10.7; general pigeon-pea duration, not BRG variety-specific
+    proxy: true
+    kind: published_reference
+  kc:
+    initial: 0.45
+    development: 0.75
+    mid: 1.1
+    late: 0.5
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths: null
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - pulse
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/22444
+  - https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+  forage_material: hay
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 14.5
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/22444
+    source_detail: Pigeon pea hay; Feedipedia table; % crude protein in dry matter (mean; only two samples)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages:
+  - emergence
+  - flowering
+  - pod_formation
+  - pod_development
+  critical_growth_stages_source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+- id: green_gram
+  name: Green gram
+  kannada: ಹೆಸರುಕಾಳು
+  scientific_name: Vigna radiata
+  category: legume
+  varieties:
+  - KKM-3
+  nitrogen_fixing: true
+  water_need:
+    value: null
+    low: 350
+    high: 400
+    unit: mm per growing season
+    source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+    source_detail: ICRISAT 2021 chapter Table 10.7 (FAO papers 33/56 attribution); green gram crop-group reference
+    proxy: true
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 65
+    high: 70
+    unit: days
+    source_url: https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+    source_detail: UAS Bangalore KKM-3 65-70 day maturity; variety-specific, not FAO dry-bean maturity
+    proxy: false
+    kind: published_reference
+    variety: KKM-3
+  kc:
+    initial: 0.45
+    development: 0.75
+    mid: 1.1
+    late: 0.5
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths: null
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - pulse
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/235
+  - https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+  - https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+  forage_material: straw
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 9.8
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/235
+    source_detail: Mung bean straw; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages:
+  - flowering
+  - pod_formation
+  - pod_development
+  critical_growth_stages_source_url: https://oar.icrisat.org/11909/1/Chapter-Legumes-2021-Proof.pdf
+- id: sorghum
+  name: Sorghum
+  kannada: ಜೋಳ
+  scientific_name: Sorghum bicolor
+  category: cereal
+  varieties: []
+  nitrogen_fixing: false
+  water_need:
+    value: null
+    low: 450
+    high: 650
+    unit: mm per growing season
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; named crop reference
+    proxy: false
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 120
+    high: 130
+    unit: days
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; named crop reference
+    proxy: false
+    kind: published_reference
+  kc:
+    initial: 0.35
+    development: 0.75
+    mid: 1.1
+    late: 0.65
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: false
+  fao_stage_lengths:
+  - 20
+  - 30
+  - 40
+  - 30
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - grain
+  - fodder_types
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/379
+  forage_material: straw
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 3.7
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/379
+    source_detail: Sorghum straw; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages: []
+  critical_growth_stages_source_url: null
+- id: foxtail_millet
+  name: Foxtail millet
+  kannada: ನವಣೆ
+  scientific_name: Setaria italica
+  category: cereal
+  varieties:
+  - GPUF-3
+  nitrogen_fixing: false
+  water_need:
+    value: null
+    low: 450
+    high: 650
+    unit: mm per growing season
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  reference_duration:
+    value: null
+    low: 105
+    high: 140
+    unit: days
+    source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+    source_detail: FAO Crop Water Needs Chapter 3 reference; crop-category proxy
+    proxy: true
+    kind: published_reference
+  kc:
+    initial: 0.35
+    development: 0.7
+    mid: 1.1
+    late: 0.65
+  kc_source_url: https://www.fao.org/4/s2022e/s2022e07.htm
+  kc_proxy: true
+  fao_stage_lengths:
+  - 15
+  - 25
+  - 40
+  - 25
+  phenology_days: null
+  phenology_source_url: null
+  uses:
+  - grain
+  - straw
+  source_urls:
+  - https://www.uasbangalore.edu.in/en/crop-based-technologies-approved-for-commercialisation/
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.fao.org/4/s2022e/s2022e07.htm
+  - https://www.feedipedia.org/node/382
+  forage_material: stover
+  forage_note: Quality for specified material, not available feed tonnes or feed production; not a cultivar-specific
+    measurement
+  forage_crude_protein_pct_dm:
+    value: 4.2
+    unit: percent of dry matter
+    source_url: https://www.feedipedia.org/node/382
+    source_detail: Foxtail millet stover; Feedipedia table; % crude protein in dry matter (mean)
+    proxy: true
+    kind: published_reference
+  straw_yield_t_ha_reference:
+    value: null
+    unit: tonnes/ha
+    kind: missing
+  observed_erosion_protection: null
+  critical_growth_stages: []
+  critical_growth_stages_source_url: null

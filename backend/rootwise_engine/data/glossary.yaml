@@ -1,0 +1,33 @@
+NDVI:
+  meaning: Normalized Difference Vegetation Index
+  simple: Satellite-based vegetation greenness indicator; low NDVI is NOT proof of a bare field.
+ET0:
+  meaning: Reference evapotranspiration
+  simple: Reference atmospheric evaporative demand, measured in millimetres per day.
+ETc:
+  meaning: Crop evapotranspiration
+  simple: Estimated crop water use, approximately Kc multiplied by ET0 under standard conditions.
+Kc:
+  meaning: Crop coefficient
+  simple: Stage and climate-dependent ratio between crop and reference evapotranspiration.
+RUSLE:
+  meaning: Revised Universal Soil Loss Equation
+  simple: An erosion model with factors for rainfall, soil, terrain, cover and conservation practices.
+C_factor:
+  meaning: RUSLE cover and management factor
+  simple: Relative protection associated with cover and field management; requires local calibration.
+soil_moisture_anomaly:
+  meaning: Difference from seasonal/historical soil-moisture baseline
+  simple: A deviation from the same calendar-period average; not moisture in one root zone.
+confidence:
+  meaning: Evidence completeness and source-quality label
+  simple: NOT the probability that a crop will succeed.
+forage_crude_protein:
+  meaning: Crude protein percentage of dry matter
+  simple: Nutrient quality measure for a specific feed material, not the amount of fodder produced.
+residue_retention:
+  meaning: Fraction of crop dry residue left on the field
+  simple: Above-ground organic material input; not a measured increase in soil organic carbon.
+market_roi:
+  meaning: Estimated net margin divided by estimated costs
+  simple: A dated scenario using market prices and estimated yield/cost, not guaranteed income.

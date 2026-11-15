@@ -1,0 +1,86 @@
+metadata:
+  geography: Tamil Nadu; example varieties, not validated for Devanahalli
+  purpose: documented flowering milestones and duration references for future local
+    variety matching
+  five_phase_boundaries_verified: false
+varieties:
+- crop_id: ragi
+  variety: CO 13
+  flowering_50pct_days_range:
+  - 55
+  - 60
+  maturity_days_range:
+  - 95
+  - 100
+  source_url: https://agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_ragi.html
+- crop_id: horse_gram
+  variety: Paiyur 2
+  flowering_50pct_days_range:
+  - 45
+  - 50
+  maturity_days_range:
+  - 100
+  - 105
+  source_url: https://www.agritech.tnau.ac.in/agriculture/CropProduction/Pulses/pulses_horsegram.html
+- crop_id: cowpea
+  variety: CO(CP) 7
+  flowering_50pct_days_range:
+  - 40
+  - 45
+  maturity_days_range:
+  - 70
+  - 75
+  source_url: https://agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_cowpea.html
+- crop_id: pigeon_pea
+  variety: VBN(Rg) 3
+  flowering_50pct_days_range:
+  - 65
+  - 70
+  maturity_days_range:
+  - 100
+  - 105
+  source_url: https://www.agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_redgram.html
+- crop_id: green_gram
+  variety: CO 6
+  flowering_50pct_days_range:
+  - 26
+  - 30
+  maturity_days_range:
+  - 62
+  - 67
+  source_url: https://agritech.tnau.ac.in/agriculture/English%20Version/Agriculture/CropProduction/Pulses/pulses_greengram.html
+- crop_id: sorghum
+  variety: CO 30
+  flowering_50pct_days_range: null
+  maturity_days_range:
+  - 95
+  - 105
+  source_url: https://agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_sorghum.html
+- crop_id: foxtail_millet
+  variety: CO(Te) 7
+  flowering_50pct_days_range: null
+  maturity_days_range:
+  - 80
+  - 85
+  source_url: https://agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_tenai.html
+- crop_id: groundnut
+  variety: null
+  flowering_50pct_days_range: null
+  maturity_days_range: null
+  source_url: null
+- crop_id: horse_gram
+  variety: PHG-9
+  flowering_50pct_days_range: null
+  maturity_days_range:
+  - 100
+  - 105
+  source_url: https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+  geography: UAS Bangalore; recommended zones 5 and 6
+- crop_id: green_gram
+  variety: KKM-3
+  flowering_50pct_days_range: null
+  maturity_days_range:
+  - 65
+  - 70
+  source_url: https://www.uasbangalore.edu.in/wp-content/uploads/2025/10/Varities-Book.pdf
+  geography: UAS Bangalore; recommended zones 5, 6 and 7

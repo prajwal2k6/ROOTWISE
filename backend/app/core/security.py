@@ -67,3 +67,38 @@ def get_supabase_user(authorization: str = Header(...)):
             "email": "farmer@rootwise.com",
             "user_metadata": {"full_name": "Farmer"},
         }
+
+
+def get_verified_supabase_user(authorization: str = Header(...)):
+    """Fail closed for new APIs that write or reveal owner-scoped M2 data."""
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header.")
+
+    access_token = authorization.removeprefix("Bearer ").strip()
+    if not access_token:
+        raise HTTPException(status_code=401, detail="Missing access token.")
+
+    if not settings.SUPABASE_URL or not settings.SUPABASE_PUBLISHABLE_KEY:
+        raise HTTPException(status_code=503, detail="Supabase authentication is not configured.")
+
+    request = Request(
+        f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1/user",
+        headers={
+            "apikey": settings.SUPABASE_PUBLISHABLE_KEY,
+            "Authorization": f"Bearer {access_token}",
+        },
+        method="GET",
+    )
+
+    try:
+        with urlopen(request, timeout=10) as response:
+            user = json.loads(response.read().decode("utf-8"))
+    except HTTPError as exc:
+        raise HTTPException(status_code=401, detail="Invalid Supabase access token.") from exc
+    except (URLError, TimeoutError) as exc:
+        raise HTTPException(status_code=503, detail="Supabase authentication is unavailable.") from exc
+
+    if not user.get("id"):
+        raise HTTPException(status_code=401, detail="Invalid Supabase user.")
+
+    return user

@@ -1,0 +1,12 @@
+# Optional dependencies for rebuilding the M2 raster and geospatial outputs.
+earthaccess
+geopandas
+matplotlib
+netCDF4
+numpy
+pandas
+pyarrow
+rasterio
+requests
+shapely
+xarray

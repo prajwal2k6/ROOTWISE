@@ -1,0 +1,266 @@
+{
+  "project": "ROOTWISE – NASA Space Apps Hackathon",
+  "module": "M2: NASA Earth Observation Data Processing & Geospatial Analytics",
+  "dataset_name": "Bengaluru Urban Pilot Geospatial Indicator Dataset",
+  "version": "1.0",
+  "generated_date": "2026-11-15",
+  "target_date": "2016-01-01",
+  "target_region": {
+    "code": "KA-BENGALURU-URBAN",
+    "name": "Bengaluru Urban",
+    "district": "Bengaluru Urban",
+    "state": "Karnataka",
+    "country": "India",
+    "total_cells": 2380,
+    "grid_resolution_m": 1000,
+    "crs": "EPSG:4326 (WGS84)"
+  },
+  "general_scientific_disclaimer": "This dataset provides satellite Earth observation (EO) and reanalysis indicators resampled or nearest-neighbor assigned to a uniform 1 km x 1 km grid over Bengaluru Urban. Satellite products have native spatial footprints ranging from 250 m to ~55 km. Gridded values do NOT represent true sub-grid in-situ ground truth at 1 km; spatial uncertainty, aggregation effects, and land-cover heterogeneity must be considered in downstream modeling (M3).",
+  "cell_attribute_fields": {
+    "grid_id": {
+      "name": "Grid Cell Identifier",
+      "type": "string",
+      "format": "{state_code}_{district_code}_{x_m}_{y_m}",
+      "example": "29_525_3710000_2796000",
+      "description": "Unique, deterministic identifier assigned to each 1 km cell based on State Census Code (29 = Karnataka), District Code (525 = Bengaluru Urban), and national projected planar coordinate grid origin in EPSG:7755 (Survey of India)."
+    },
+    "state": {
+      "name": "State Name",
+      "type": "string",
+      "description": "Indian state administrative name (Karnataka)."
+    },
+    "district": {
+      "name": "District Name",
+      "type": "string",
+      "description": "Indian district administrative name (Bengaluru Urban)."
+    },
+    "region_code": {
+      "name": "Region Code",
+      "type": "string",
+      "description": "ISO/National standardized administrative regional code (KA-BENGALURU-URBAN)."
+    },
+    "data_date": {
+      "name": "Observation Date",
+      "type": "string",
+      "format": "YYYY-MM-DD",
+      "description": "Calendar observation date represented by the dataset (2016-01-01)."
+    },
+    "resolution_m": {
+      "name": "Spatial Resolution",
+      "type": "integer",
+      "unit": "metres",
+      "description": "Nominal horizontal cell width and height (1000 metres)."
+    },
+    "centroid_lat": {
+      "name": "Centroid Latitude",
+      "type": "float",
+      "unit": "degrees North",
+      "valid_range": [-90.0, 90.0],
+      "description": "Geographic latitude of the grid cell polygon geometric centroid in WGS84."
+    },
+    "centroid_lon": {
+      "name": "Centroid Longitude",
+      "type": "float",
+      "unit": "degrees East",
+      "valid_range": [-180.0, 180.0],
+      "description": "Geographic longitude of the grid cell polygon geometric centroid in WGS84."
+    },
+    "geometry": {
+      "name": "Cell Polygon Geometry",
+      "type": "GeoJSON Polygon",
+      "crs": "EPSG:4326",
+      "description": "Closed boundary ring polygon defining the exact 1 km x 1 km cell footprint in WGS84."
+    },
+    "data_quality": {
+      "name": "Overall Cell Data Quality Classification",
+      "type": "string",
+      "allowed_values": ["observed", "estimated", "missing"],
+      "description": "Summary data quality flag. 'estimated' reflects that rainfall and climate variables are derived from satellite/reanalysis models rather than in-situ weather stations."
+    }
+  },
+  "indicators": {
+    "rainfall_mm": {
+      "field_name": "rainfall_mm",
+      "human_readable_name": "Daily Precipitation Accumulation",
+      "description": "Total liquid-equivalent precipitation accumulated over the 24-hour observation day (2016-01-01 00:00:00 to 23:59:59 UTC).",
+      "unit": "mm/day",
+      "nasa_source_product": "NASA GPM IMERG Final Run V07B (Half-Hourly/Daily Combined Precipitation)",
+      "native_spatial_resolution": "0.1° (~11.1 km x 11.1 km)",
+      "temporal_resolution": "Daily accumulation",
+      "observation_period": "2016-01-01",
+      "scale_factor": 1.0,
+      "assignment_method": "Zonal area-weighted / nearest-grid-cell mapping to 1 km cells",
+      "quality_control_method": "Multi-satellite radiometer/radar precipitation estimates calibrated with GPCC monthly rain-gauge analysis.",
+      "meaning_of_null": "Precipitation data unavailable, corrupted, or uncalibrated.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2380,
+        "null_cells": 0,
+        "coverage_pct": 100.0,
+        "observed_range": [0.0, 0.0]
+      },
+      "known_limitations": [
+        "Native resolution is ~0.1 degree (~11 km); multiple 1 km cells share the same coarse source satellite retrieval.",
+        "On 2016-01-01 (mid-winter dry season in South India), GPM IMERG recorded 0.00 mm across Bengaluru Urban; valid zero rainfall must remain strictly 0.0 and not be confused with null.",
+        "IMERG Final Run calibrates with monthly gauge averages but does not capture localized micro-scale convective showers at 1 km resolution."
+      ]
+    },
+    "temperature_min_c": {
+      "field_name": "temperature_min_c",
+      "human_readable_name": "Daily Minimum 2-Metre Air Temperature",
+      "description": "Minimum surface air temperature measured 2 metres above the surface during the calendar day.",
+      "unit": "degree Celsius",
+      "nasa_source_product": "NASA POWER MERRA-2 (Variable: T2M_MIN)",
+      "native_spatial_resolution": "0.5° latitude × 0.625° longitude (~55 km × ~69 km)",
+      "temporal_resolution": "Daily aggregate",
+      "observation_period": "2016-01-01",
+      "scale_factor": 1.0,
+      "assignment_method": "Nearest valid NASA POWER regional grid point assignment",
+      "quality_control_method": "Global atmospheric data assimilation system (GEOS-5 FP-IT / MERRA-2) incorporating global radiosonde, satellite radiance, and surface observations.",
+      "meaning_of_null": "Reanalysis grid node missing or outside model domain.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2380,
+        "null_cells": 0,
+        "coverage_pct": 100.0,
+        "observed_range": [12.77, 13.75]
+      },
+      "known_limitations": [
+        "Derived from global atmospheric reanalysis on a coarse ~55 km grid node.",
+        "Values represent smooth regional synoptic background temperatures and do not resolve local urban heat island (UHI) micro-variability at 1 km.",
+        "Values are model assimilation estimates, not direct in-situ measurements."
+      ]
+    },
+    "temperature_max_c": {
+      "field_name": "temperature_max_c",
+      "human_readable_name": "Daily Maximum 2-Metre Air Temperature",
+      "description": "Maximum surface air temperature measured 2 metres above the surface during the calendar day.",
+      "unit": "degree Celsius",
+      "nasa_source_product": "NASA POWER MERRA-2 (Variable: T2M_MAX)",
+      "native_spatial_resolution": "0.5° latitude × 0.625° longitude (~55 km × ~69 km)",
+      "temporal_resolution": "Daily aggregate",
+      "observation_period": "2016-01-01",
+      "scale_factor": 1.0,
+      "assignment_method": "Nearest valid NASA POWER regional grid point assignment",
+      "quality_control_method": "Global atmospheric data assimilation system (GEOS-5 FP-IT / MERRA-2).",
+      "meaning_of_null": "Reanalysis grid node missing or outside model domain.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2380,
+        "null_cells": 0,
+        "coverage_pct": 100.0,
+        "observed_range": [25.89, 27.67]
+      },
+      "known_limitations": [
+        "Coarse regional reanalysis footprint (~55 km).",
+        "Does not capture localized thermal gradients across varying urban canopy and impervious surface fractions at 1 km.",
+        "Regional background temperature estimate, not independent station data."
+      ]
+    },
+    "humidity_pct": {
+      "field_name": "humidity_pct",
+      "human_readable_name": "Daily Relative Humidity at 2 Metres",
+      "description": "Mean relative humidity at 2 metres above ground level, computed from 2-metre air temperature and dew point.",
+      "unit": "%",
+      "nasa_source_product": "NASA POWER MERRA-2 (Variable: RH2M)",
+      "native_spatial_resolution": "0.5° latitude × 0.625° longitude (~55 km × ~69 km)",
+      "temporal_resolution": "Daily average",
+      "observation_period": "2016-01-01",
+      "scale_factor": 1.0,
+      "assignment_method": "Nearest valid NASA POWER regional grid point assignment",
+      "quality_control_method": "Assimilated atmospheric moisture fields in MERRA-2 bounded between 0% and 100%.",
+      "meaning_of_null": "Reanalysis node missing or invalid.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2380,
+        "null_cells": 0,
+        "coverage_pct": 100.0,
+        "observed_range": [73.06, 78.86]
+      },
+      "known_limitations": [
+        "Regional reanalysis model estimate on ~55 km grid node.",
+        "Atmospheric boundary-layer moisture represents regional air mass rather than localized evapotranspiration pockets at 1 km."
+      ]
+    },
+    "soil_moisture_pct": {
+      "field_name": "soil_moisture_pct",
+      "human_readable_name": "Volumetric Topsoil Moisture Percentage (0–5 cm depth)",
+      "description": "Volumetric soil moisture content in the top 5 cm of soil, expressed as volumetric water fraction percentage (% m³/m³).",
+      "unit": "%",
+      "nasa_source_product": "NASA SMAP SPL3SMP Version 009 (L3 Radiometer Daily 36 km EASE-Grid 2.0)",
+      "native_spatial_resolution": "36 km EASE-Grid 2.0 (~36 km x 36 km)",
+      "temporal_resolution": "Daily overpass",
+      "observation_period": "2016-01-01 (~12:22 UTC / 17:52 IST Ascending/PM Orbit 04899_A)",
+      "scale_factor": 100.0,
+      "assignment_method": "Nearest valid regional SMAP 36 km pixel assignment",
+      "quality_control_method": "Strict 3-bit flag filter: (retrieval_qual_flag_pm & 0b111) == 0; valid range 0.02 to 0.50 m³/m³.",
+      "meaning_of_null": "No valid SMAP pixel within regional domain, or retrieval disqualified by radio-frequency interference (RFI) / frozen ground.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2380,
+        "null_cells": 0,
+        "coverage_pct": 100.0,
+        "observed_range": [8.55, 13.32]
+      },
+      "known_limitations": [
+        "Native radiometer footprint is ~36 km; exactly five valid SMAP pixels enclose the 2,380 Bengaluru Urban grid cells.",
+        "Central urban core pixels failed the strict radiometer quality mask due to heavy radio-frequency interference and high impervious surface fraction (retrieval_qual_flag = 9).",
+        "Cells are mapped to the nearest of 5 valid surrounding peri-urban/rural pixels (max distance 37.91 km). Values reflect regional soil moisture background and do not capture 1 km sub-grid impervious surface variations."
+      ]
+    },
+    "ndvi": {
+      "field_name": "ndvi",
+      "human_readable_name": "Normalized Difference Vegetation Index",
+      "description": "Continuously scaled vegetation greenness and canopy vigour index calculated from MODIS surface reflectance bands: (NIR - Red) / (NIR + Red).",
+      "unit": "dimensionless (-1.0 to +1.0)",
+      "nasa_source_product": "NASA MODIS/Terra MOD13Q1 Version 061 (16-Day L3 Global 250m Sinusoidal Grid, Tile h25v07)",
+      "native_spatial_resolution": "250 m Sinusoidal Grid (~231.66 m x 231.66 m)",
+      "temporal_resolution": "16-day composite",
+      "observation_period": "2016-01-01 to 2016-01-16 (Composite Period DOY 2016001-2016016)",
+      "scale_factor": 0.0001,
+      "assignment_method": "Centroid 250 m pixel sampling, with within-cell 250 m pixel mean fallback; null otherwise",
+      "quality_control_method": "Strict QA filter: pixel_reliability == 0 (Good Data) AND (VI_Quality & 0b11) == 0 (VI produced, good quality). Raw fill value -3000 excluded.",
+      "meaning_of_null": "Pixel failed strict quality screening due to high aerosol scattering, sub-pixel cloud contamination, shadow, or dense urban surface interference.",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 1293,
+        "null_cells": 1087,
+        "coverage_pct": 54.33,
+        "observed_range": [-0.1219, 0.7782]
+      },
+      "known_limitations": [
+        "Strict quality filtering (pixel_reliability == 0) excludes marginal pixels affected by high urban aerosols in central Bengaluru. This produces 1,087 null cells in the urban core.",
+        "Null values MUST NOT be interpreted as zero vegetation; they indicate satellite atmospheric or surface retrieval uncertainty.",
+        "Composite spans 16 calendar days from 2016-01-01 to 2016-01-16 to select the highest-quality cloud-free observations."
+      ]
+    },
+    "evapotranspiration_mm": {
+      "field_name": "evapotranspiration_mm",
+      "human_readable_name": "8-Day Accumulated Evapotranspiration",
+      "description": "Total terrestrial evapotranspiration (canopy transpiration, soil evaporation, and canopy interception evaporation) accumulated over the 8-day composite window.",
+      "unit": "mm/8day (accumulated over 8-day composite 2016-01-01 to 2016-01-08)",
+      "nasa_source_product": "NASA MODIS/Terra MOD16A2GF Version 061 (8-Day L4 Global 500m Sinusoidal Grid, Tile h25v07, Year-End Gap-Filled)",
+      "native_spatial_resolution": "500 m Sinusoidal Grid (~463.31 m x 463.31 m)",
+      "temporal_resolution": "8-day composite accumulation",
+      "observation_period": "2016-01-01 to 2016-01-08 (DOY 2016001-2016008)",
+      "scale_factor": 0.1,
+      "daily_rate_divisor": 8,
+      "assignment_method": "Centroid 500 m pixel sampling, with within-cell 500 m pixel mean fallback; null otherwise",
+      "quality_control_method": "Valid physical raw range (-32767 to 32700); discrete special codes 32761–32767 strictly excluded. ET_QC_500m Bit 0 recorded for diagnostics per NASA MOD16 GF user guide.",
+      "meaning_of_null": "Surface is not modeled by the Penman-Monteith logic (e.g., Code 32762 = Urban/Built-up impervious surface, Code 32766 = Water body), or nodata fill (Code 32767).",
+      "cell_coverage": {
+        "total_cells": 2380,
+        "populated_cells": 2171,
+        "null_cells": 209,
+        "coverage_pct": 91.22,
+        "observed_range": [3.80, 22.40]
+      },
+      "known_limitations": [
+        "Value represents total evapotranspiration accumulated over 8 calendar days (mm/8day), NOT a single-day rate. For mean daily equivalent (mm/day), divide by 8.",
+        "MOD16 Penman-Monteith algorithm does not calculate evapotranspiration over impervious urban/built-up land cover (Code 32762); 209 cells in central Bengaluru remain strictly null.",
+        "Null values MUST NOT be replaced with 0.0; 0.0 implies zero evaporation on a vegetated surface, whereas null indicates an unmodeled impervious surface.",
+        "MOD16A2GF year-end gap-filling applies exclusively to LAI/FPAR inputs (MOD15A2H) and does not fill urban or water surfaces."
+      ]
+    }
+  }
+}

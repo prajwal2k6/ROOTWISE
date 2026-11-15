@@ -1,0 +1,50 @@
+============================================================================
+  ROOTWISE M2: BENGALURU URBAN FINAL DATASET VALIDATION REPORT
+============================================================================
+Timestamp               : 2026-11-15 02:23:06
+Target Dataset          : bengaluru_urban_20160101.json
+Dataset Path            : C:\Users\Manish S\OneDrive\Desktop\ROOTWISE\data\outputs\bengaluru_urban_20160101.json
+File Size               : 2.76 MB (2,891,247 bytes)
+Schema Version          : 1.0
+Coordinate Reference    : EPSG:4326 (WGS84 lat/lon)
+Region                  : Bengaluru Urban, Karnataka, India (KA-BENGALURU-URBAN)
+Observation Date        : 2016-01-01
+Grid Resolution         : 1000 metres
+----------------------------------------------------------------------------
+
+1. STRUCTURAL & GEOMETRIC INTEGRITY:
+  • Total Grid Cells      : 2,380
+  • Unique Grid IDs       : 2,380
+  • Valid Geometries      : 2,380 (100.0%)
+  • Duplicate Grid IDs    : 0
+  • Non-standard Floats   : 0 (No NaN / Infinity)
+
+2. SEVEN-INDICATOR COVERAGE & PHYSICAL SUMMARY:
+  ------------------------------------------------------------------------
+  Indicator Name           | Populated   | Null     | Coverage | Observed Range
+  ------------------------------------------------------------------------
+  rainfall_mm              | 2,380 cells |    0 | 100.00% | [0.00, 0.00] (mean=0.00)
+  temperature_min_c        | 2,380 cells |    0 | 100.00% | [12.77, 13.75] (mean=12.85)
+  temperature_max_c        | 2,380 cells |    0 | 100.00% | [25.89, 27.67] (mean=27.12)
+  humidity_pct             | 2,380 cells |    0 | 100.00% | [73.06, 78.86] (mean=73.18)
+  soil_moisture_pct        | 2,380 cells |    0 | 100.00% | [8.55, 13.32] (mean=10.33)
+  ndvi                     | 1,293 cells | 1,087 |  54.33% | [-0.12, 0.78] (mean=0.41)
+  evapotranspiration_mm    | 2,171 cells |  209 |  91.22% | [3.80, 22.40] (mean=6.92)
+  ------------------------------------------------------------------------
+
+3. SCIENTIFIC COMPLIANCE & QUALITY AUDIT:
+  • Rainfall (NASA GPM IMERG)         : 2,380/2,380 (100.0%) valid measurements (0.00 mm dry day).
+  • Temperature Min (NASA POWER)      : 2,380/2,380 (100.0%) coarse MERRA-2 nearest point assignment.
+  • Temperature Max (NASA POWER)      : 2,380/2,380 (100.0%) coarse MERRA-2 nearest point assignment.
+  • Humidity (NASA POWER)             : 2,380/2,380 (100.0%) coarse MERRA-2 nearest point assignment.
+  • Soil Moisture (NASA SMAP PM)      : 2,380/2,380 (100.0%) mapped to 5 valid regional pixels (8.55% to 13.32%).
+  • NDVI (NASA MODIS MOD13Q1)         : 1,293/2,380 (54.33%) populated; 1,087 null strictly preserved for urban core.
+  • Evapotranspiration (MOD16A2GF)    : 2,171/2,380 (91.22%) populated; 209 null strictly preserved for urban core/water.
+  • Special Land-Cover Codes Filtered : Codes 32761-32767 strictly excluded; zero special codes in physical ET.
+  • Null Representation Integrity     : All unmeasured/unmodeled values stored as JSON null, never as 0.0.
+  • Sample JSON Synchronization       : 3-cell sample file verified in 100% agreement with full dataset.
+
+4. VALIDATION AUDIT VERDICT:
+  [✔] STATUS: ALL VALIDATION CHECKS PASSED (100% PRODUCTION READY)
+  Zero structural errors, zero schema violations, zero illegal values.
+============================================================================
